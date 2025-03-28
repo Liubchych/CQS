@@ -6,7 +6,7 @@ using System.Threading;
 
 class Program
 {
-    static string logFilePath = "log.txt"; // Файл логу
+    
     static DateTime lastReceivedTime = DateTime.MinValue; // Останній час отримання даних
 
     static ConcurrentQueue<string> logQueue = new ConcurrentQueue<string>(); // Черга для запису в файл
@@ -33,13 +33,12 @@ class Program
 
                 port.Open();  // Відкриваємо порт
                 Console.WriteLine($"Listening on {portName} at {baudRate} baud...");
-
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey(); // Очікує натискання клавіші для виходу
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Помилка: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
     }
