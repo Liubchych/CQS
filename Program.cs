@@ -24,13 +24,6 @@ class Program
                 port.Handshake = Handshake.None;
                 port.DataReceived += Port_DataReceived; // Обробник події отримання даних
 
-                string logFilePath = "log.txt"; // Файл логу
-                // Створюємо файл, якщо його немає
-                if (!File.Exists(logFilePath))
-                {
-                    File.Create(logFilePath).Close();
-                }
-
                 // Запускаємо фоновий потік для запису у файл
                 Thread logThread = new Thread(ProcessLogQueue)
                 {
@@ -57,7 +50,6 @@ class Program
         string data = port.ReadLine();
 
         Console.WriteLine(data); // Виводимо лише отримані дані
-
 
         // Парсимо отримані дані
         ParsedData parsedData = DataParsing.ParseData(data);
